@@ -27,3 +27,55 @@ of the two center squares.
 There are many different algorithms you can use to solve this problem. The 
 interesting challenge is to come up with a strategy that works.
 */
+
+
+
+import "turns";
+
+
+
+function markMidpoint(){
+	while(frontIsClear()){
+		move();
+		while(beepersPresent()){
+			turnAround();
+			move();
+			putBeeper();
+		}
+	}
+	putBeeper();
+	turnAround();
+}
+
+
+
+function Solve(){
+	while(frontIsClear()){
+		markMidpoint();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
