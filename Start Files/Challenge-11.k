@@ -41,11 +41,37 @@ function markMidpoint(){
 			turnAround();
 			move();
 			putBeeper();
+			move();
 		}
 	}
 	putBeeper();
 	turnAround();
+	if(beepersPresent()){
+		cleanBeepers(){
+	}
 }
+
+
+
+function goToSide(){
+	while(frontIsClear()){
+		move();
+	}
+}
+
+
+
+funtion cleanBeepers(){
+	goToSide();
+	turnAround();
+	while(frontIsClear()){
+		move();
+		if(beepersPresent()){
+			pickBeeper();
+		}
+	}
+}
+
 
 
 
