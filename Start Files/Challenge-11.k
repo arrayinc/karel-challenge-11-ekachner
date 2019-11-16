@@ -1,4 +1,5 @@
-/* File: Challenge-11.k
+
+}/* File: Challenge-11.k
  ---------------------------
 Program Karel to place a single beeper at the center of 1st Street. The program
 should finish its execution with Karel standing on a beeper.
@@ -34,36 +35,37 @@ import "turns";
 
 
 
-function markMidpoint(){
+function markEnds(){
+	repeat(2){
+		while(frontIsClear()){
+			move();
+		}
+		putBeeper();
+		turnAround();
+	}
+}
+
+
+
+function identifyMidpoint(){
 	while(frontIsClear()){
 		move();
 		while(beepersPresent()){
 			turnAround();
 			move();
-			putBeeper();
-			move();
+			if(noBeepersPresent()){
+				putBeeper();
+				move();
+			}else{
+				cleanOneSideBeepers();
+			}
 		}
 	}
-	putBeeper();
-	turnAround();
-	if(beepersPresent()){
-		cleanBeepers(){
-	}
 }
 
 
 
-function goToSide(){
-	while(frontIsClear()){
-		move();
-	}
-}
-
-
-
-funtion cleanBeepers(){
-	goToSide();
-	turnAround();
+function cleanOneSideBeepers(){
 	while(frontIsClear()){
 		move();
 		if(beepersPresent()){
@@ -74,12 +76,29 @@ funtion cleanBeepers(){
 
 
 
+function reportToMidpoint(){
+	turnAround();
+	while(frontIsClear()){
+		move();
+	}
+	turnAround();
+	while(beepersPresent()){
+		pickBeeper();
+		move();
+	}
+	turnAround();
+	move();
+	putBeeper();
+}
+
+
 
 function Solve(){
-	while(frontIsClear()){
-		markMidpoint();
-	}
+	markEnds();
+	identifyMidpoint();
+	reportToMidpoint();
 }
+
 
 
 
